@@ -1,9 +1,6 @@
 package com.sp.shop.member;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sp.shop.dao.CommonDAO;
 
 @Service("member.memberService")
 public class MemberServieImpl implements MemberService {
