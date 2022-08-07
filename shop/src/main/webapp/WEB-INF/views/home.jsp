@@ -14,14 +14,19 @@ body { margin: 0; padding: 0; }
 @media (min-width: 992px) { .container { max-width: 960px; } }
 @media (min-width: 1200px) { .container { max-width: 1140px; } }
 
-.inner-page { min-height: 720px; }
+.inner-page { min-height: 740px; }
 .inner-page img { margin: 0 auto; display: block; width: 400px; padding-top: 185px; }
 </style>
 
 <script type="text/javascript">
+	
 </script>
 
 <div class="container body-container">
+	<div class="nav-var">
+		
+	</div>
+	
 	<div class="inner-page">
 		<img src="${pageContext.request.contextPath}/resources/images/main.jpg">
     </div>
