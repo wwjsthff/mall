@@ -4,9 +4,58 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style type="text/css">
+ul.tabs { 
+	margin: 0; padding: 0; list-style: none;
+	height: 35px; width: 100%; border-bottom: 1px solid #ddd;
+}
+ul.tabs > li {
+	float: left; margin: 0; padding: 0px 21px;
+	cursor: pointer; height: 35px; line-height: 35px;
+	overflow: hidden; position: relative; border-bottom: 1px solid #ddd;
+}
+ul.tabs li:hover { background: #e7e7e7; }	
+ul.tabs li.active { font-weight: 700; border: 1px solid #ddd; border-bottom-color:  transparent; }
 </style>
 
 <script type="text/javascript">
+$(function(){
+	$("#tab-0").addClass("active");
+	
+	$("ul.tabs li").click(function() {
+		let tab = $(this).attr("data-tab");
+		
+		$("ul.tabs li").each(function(){
+			$(this).removeClass("active");
+		});
+		
+		$("#tab-" + tab).addClass("active");
+		
+		let url = "${pageContext.request.contextPath}/admin/productManage/analysis";
+		location.href = url;
+	});
+});
+
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type : method,
+		url : url,
+		data : query,
+		dataType : dataType,
+		success : function(data){
+			fn(data);
+		},
+		beforeSend : function(jqXHR) {
+			jqXHR.setRequestHeader("AJAX", true);
+		}
+	});
+}
+
+function searchList() {
+	const f = document.searchForm;
+	f.enabled.value = $("#selectEnabled").val();
+	f.action = "${pageContext.request.contextPath}/admin/productManage/list";
+	f.submit();
+}
 </script>
 
 <main>
